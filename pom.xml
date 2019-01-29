@@ -22,6 +22,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+        <resilience4j.version>0.13.2</resilience4j.version>
 	</properties>
 
 	<dependencies>
@@ -35,6 +36,111 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.39</version>
+        </dependency>
+
+        <!--include resilience4j core, ratelimiter, bulkhead, circularbuffer, circuitbreaker, retry, consumer, cache, timelimiter-->
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-all</artifactId>
+            <version>${resilience4j.version}</version>
+        </dependency>
+
+        <!--<dependency>-->
+            <!--<groupId>io.github.resilience4j</groupId>-->
+            <!--<artifactId>resilience4j-circuitbreaker</artifactId>-->
+            <!--<version>${resilience4j.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>io.github.resilience4j</groupId>-->
+            <!--<artifactId>resilience4j-ratelimiter</artifactId>-->
+            <!--<version>${resilience4j.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>io.github.resilience4j</groupId>-->
+            <!--<artifactId>resilience4j-retry</artifactId>-->
+            <!--<version>${resilience4j.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>io.github.resilience4j</groupId>-->
+            <!--<artifactId>resilience4j-bulkhead</artifactId>-->
+            <!--<version>${resilience4j.version}</version>-->
+        <!--</dependency>-->
+        <!--Response caching-->
+        <!--<dependency>-->
+            <!--<groupId>io.github.resilience4j</groupId>-->
+            <!--<artifactId>resilience4j-cache</artifactId>-->
+            <!--<version>${resilience4j.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>io.github.resilience4j</groupId>-->
+            <!--<artifactId>resilience4j-timelimiter</artifactId>-->
+            <!--<version>${resilience4j.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>io.github.resilience4j</groupId>-->
+            <!--<artifactId>resilience4j-consumer</artifactId>-->
+            <!--<version>${resilience4j.version}</version>-->
+        <!--</dependency>-->
+
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-annotations</artifactId>
+            <version>${resilience4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-spring</artifactId>
+            <version>${resilience4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-prometheus</artifactId>
+            <version>${resilience4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-rxjava2</artifactId>
+            <version>${resilience4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-metrics</artifactId>
+            <version>${resilience4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-ratpack</artifactId>
+            <version>${resilience4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-reactor</artifactId>
+            <version>${resilience4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-micrometer</artifactId>
+            <version>${resilience4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-spring-boot2</artifactId>
+            <version>${resilience4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-test</artifactId>
+            <version>${resilience4j.version}</version>
+        </dependency>
 	</dependencies>
 
 	<build>
@@ -45,6 +151,17 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<repositories>
+		<repository>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<id>jcenter-releases</id>
+			<name>jcenter</name>
+			<url>http://jcenter.bintray.com</url>
+		</repository>
+	</repositories>
 
 
 </project>

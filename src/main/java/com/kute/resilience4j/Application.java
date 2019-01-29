@@ -1,8 +1,11 @@
-package com.kute.pureresilience4jtest;
+package com.kute.resilience4j;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * @author kute
+ */
 @SpringBootApplication
 public class Application {
 
