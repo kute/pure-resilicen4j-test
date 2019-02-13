@@ -15,8 +15,9 @@ public class BackendService {
         return "doSomething";
     }
 
-    public void throwException() {
+    public String throwException() {
         LOGGER.info("throwException method");
         throw new RuntimeException();
     }
+
 }
