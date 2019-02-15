@@ -25,7 +25,7 @@ resilience4j:
                 failureRateThreshold: 50
                 eventConsumerBufferSize: 10
                 registerHealthIndicator: true
-                recordFailurePredicate: com.kute.resilience4j.predicate.DefaultFailurePredicate
+                recordFailurePredicate: com.kute.resilience4j.predicate.UserFailurePredicate
                 recordExceptions:
                     - org.springframework.web.client.HttpServerErrorException
                     - com.kute.resilience4j.exception.UserException

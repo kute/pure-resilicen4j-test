@@ -27,9 +27,9 @@ import java.util.stream.IntStream;
  */
 @RestController
 @RequestMapping("/demo")
-public class DemoController {
+public class CircuitBreakerController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(DemoController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(CircuitBreakerController.class);
 
     @Resource
     private DemoService demoService;
@@ -66,10 +66,11 @@ public class DemoController {
             default:
         }
         CircuitBreaker circuitBreaker = getCircuitbreaker(breaker);
-        LOGGER.info("=============================================");
-        LOGGER.info("{}", JSONObject.toJSONString(ImmutableMap.of("metrics", circuitBreaker.getMetrics(),
-                "state", circuitBreaker.getState())));
-        return null;
+
+        circuitBreaker.getEventPublisher().onEvent(event -> LOGGER.info("getEventPublisher onEvent:{}", event.toString()));
+
+        return JSONObject.toJSONString(ImmutableMap.of("metrics", circuitBreaker.getMetrics(),
+                "state", circuitBreaker.getState()));
     }
 
     /**
