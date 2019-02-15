@@ -1,2 +1,59 @@
 server:
   port: 8090
+
+# 配置 resilience4j config
+# @see io.github.resilience4j.circuitbreaker.autoconfigure.CircuitBreakerProperties
+resilience4j:
+    circuitbreaker:
+        backends:
+            defaultBreaker:
+                ringBufferSizeInClosedState: 10
+                ringBufferSizeInHalfOpenState: 3
+                waitInterval: 5000
+                failureRateThreshold: 50
+                eventConsumerBufferSize: 10
+                registerHealthIndicator: true
+                recordFailurePredicate: com.kute.resilience4j.predicate.DefaultFailurePredicate
+                recordExceptions:
+                    - org.springframework.web.client.HttpServerErrorException
+                ignoreExceptions:
+                    - org.springframework.web.client.HttpClientErrorException
+            userBreaker:
+                ringBufferSizeInClosedState: 5
+                ringBufferSizeInHalfOpenState: 3
+                waitInterval: 5000
+                failureRateThreshold: 50
+                eventConsumerBufferSize: 10
+                registerHealthIndicator: true
+                recordFailurePredicate: com.kute.resilience4j.predicate.DefaultFailurePredicate
+                recordExceptions:
+                    - org.springframework.web.client.HttpServerErrorException
+                    - com.kute.resilience4j.exception.UserException
+                ignoreExceptions:
+                    - org.springframework.web.client.HttpClientErrorException
+
+# @see org/springframework/boot/spring-boot-actuator-autoconfigure/2.1.0.RELEASE/spring-boot-actuator-autoconfigure-2.1.0.RELEASE.jar!/META-INF/spring-configuration-metadata.json
+management:
+  server:
+    servlet:
+      context-path: /management
+    port: ${server.port}  # default server.port
+  endpoint:
+    circuitbreaker-events:
+      enabled: true # 开启circuitbreaker-event endpoint，default true
+    circuitbreakers:
+      enabled: true # 开启 circuitbreaker endpoint，default true
+    ratelimiter-events:
+      enabled: true
+    ratelimiters:
+      enabled: true
+    health:
+      show-details: always
+
+# 配置 http://localhost:8090/actuator/info  endpoint
+info:
+    name: ${spring.application.name}
+    description: resilience4j demo
+    environment: ${spring.profiles.active}
+    version: 0.0.1
+

@@ -2,6 +2,7 @@
 http://resilience4j.github.io/resilience4j/
 https://blog.csdn.net/lonewolf79218/article/details/85260833
 http://www.vavr.io/vavr-docs/
+https://github.com/RobWin/resilience4j-spring-boot2-demo
 
 > Core modules:
 
